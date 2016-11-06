@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 NOV 2016 19:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 NOV 2016 22:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -579,27 +579,98 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 34.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<img/aapl.png, id=4, 519.9425pt x 282.05376pt>
+File: img/aapl.png Graphic file (type png)
+ <use img/aapl.png>
+Package pdftex.def Info: img/aapl.png used on input line 46.
+(pdftex.def)             Requested size: 207.97331pt x 112.81949pt.
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./mile
-stone3.aux) ) 
+<img/amzn.png, id=6, 512.91624pt x 282.05376pt>
+File: img/amzn.png Graphic file (type png)
+ <use img/amzn.png>
+Package pdftex.def Info: img/amzn.png used on input line 47.
+(pdftex.def)             Requested size: 205.16286pt x 112.81949pt.
+
+<img/crm.png, id=7, 506.89375pt x 282.05376pt>
+File: img/crm.png Graphic file (type png)
+ <use img/crm.png>
+Package pdftex.def Info: img/crm.png used on input line 48.
+(pdftex.def)             Requested size: 202.7539pt x 112.81949pt.
+
+<img/cvs.png, id=8, 499.8675pt x 282.05376pt>
+File: img/cvs.png Graphic file (type png)
+ <use img/cvs.png>
+Package pdftex.def Info: img/cvs.png used on input line 49.
+(pdftex.def)             Requested size: 199.94345pt x 112.81949pt.
+
+<img/fb.png, id=9, 512.91624pt x 282.05376pt>
+File: img/fb.png Graphic file (type png)
+ <use img/fb.png>
+Package pdftex.def Info: img/fb.png used on input line 50.
+(pdftex.def)             Requested size: 205.16286pt x 112.81949pt.
+
+<img/goog.png, id=10, 506.89375pt x 282.05376pt>
+File: img/goog.png Graphic file (type png)
+ <use img/goog.png>
+Package pdftex.def Info: img/goog.png used on input line 51.
+(pdftex.def)             Requested size: 202.7539pt x 112.81949pt.
+
+<img/ibm.png, id=11, 506.89375pt x 282.05376pt>
+File: img/ibm.png Graphic file (type png)
+ <use img/ibm.png>
+Package pdftex.def Info: img/ibm.png used on input line 52.
+(pdftex.def)             Requested size: 202.7539pt x 112.81949pt.
+
+<img/ko.png, id=12, 512.91624pt x 282.05376pt>
+File: img/ko.png Graphic file (type png)
+ <use img/ko.png>
+Package pdftex.def Info: img/ko.png used on input line 53.
+(pdftex.def)             Requested size: 205.16286pt x 112.81949pt.
+
+<img/pfe.png, id=13, 499.8675pt x 282.05376pt>
+File: img/pfe.png Graphic file (type png)
+ <use img/pfe.png>
+Package pdftex.def Info: img/pfe.png used on input line 54.
+(pdftex.def)             Requested size: 199.94345pt x 112.81949pt.
+
+<img/ups.png, id=14, 506.89375pt x 282.05376pt>
+File: img/ups.png Graphic file (type png)
+ <use img/ups.png>
+Package pdftex.def Info: img/ups.png used on input line 55.
+(pdftex.def)             Requested size: 202.7539pt x 112.81949pt.
+ [1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./img/a
+apl.png> <./img/amzn.png> <./img/crm.png> <./img/cvs.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2 <./img/fb.png> <./img/goog.png> <./img/ibm.png> <./img/ko.png> <./img/pfe.pn
+g> <./img/ups.png>] (./milestone3.aux) ) 
 Here is how much of TeX's memory you used:
- 13056 strings out of 493089
- 260842 string characters out of 6134842
- 296242 words of memory out of 5000000
- 16293 multiletter control sequences out of 15000+600000
- 9489 words of font info for 36 fonts, out of 8000000 for 9000
+ 13122 strings out of 493089
+ 261744 string characters out of 6134842
+ 298242 words of memory out of 5000000
+ 16343 multiletter control sequences out of 15000+600000
+ 11895 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,54p,414b,197s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-7.pfb>
-Output written on milestone3.pdf (1 page, 39855 bytes).
+ 55i,11n,54p,813b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt10.pfb>
+Output written on milestone3.pdf (2 pages, 211929 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
- 19 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
