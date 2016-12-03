@@ -20,6 +20,8 @@ def avg_distance(train_preds):
 
 
 def range_percentile(train_preds):
+    if len(train_preds) == 1:
+        return [1]
     norms = [np.linalg.norm(i) for i in train_preds]
     min_val = np.min(norms)
     max_val = np.max(norms)
