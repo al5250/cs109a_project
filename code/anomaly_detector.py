@@ -1,6 +1,6 @@
-# A class for anomaly detection.  There are two main customizable options: 
+# A class for anomaly detection.  There are two main customizable options:
 #      1) A strangeness function selected from the 'strange' module.
-#      2) A Martingale creation function selected from the 'martingale' module.  
+#      2) A Martingale creation function selected from the 'martingale' module.
 
 from __future__ import division
 import numpy as np
@@ -24,7 +24,8 @@ class AnomalyDetector(object):
         n = len(train_preds)
         strange_dict = {
             'AverageDistance': strange.avg_distance,
-            'RangePercentile': strange.range_percentile
+            'RangePercentile': strange.range_percentile,
+            'OLSTrend': strange.ols_trend
         }
         p_vals = []
         for i in range(0, n):
@@ -40,14 +41,15 @@ class AnomalyDetector(object):
     def get_mgales(self, p_vals):
         mgale_dict = {
             'Power': martingale.power,
-            'SimpleMixture': martingale.simple_mixture
+            'SimpleMixture': martingale.simple_mixture,
+            'Plugin': martingale.plugin
         }
         params = self.mgale_params
         params['p_vals'] = p_vals
         mgales = mgale_dict[self.mgale_type](**params)
         return mgales
 
-    # Plots Martingales values, highlighting the ones that cross the threshold. 
+    # Plots Martingales values, highlighting the ones that cross the threshold.
     def plot_mgales(self, mgales):
         n = len(mgales)
         plt.figure()
@@ -62,7 +64,7 @@ class AnomalyDetector(object):
         plt.ylabel('Martingale Values')
         plt.show()
 
-    # Combines get_p_values, get_mgales, and plot_mgales into one function.  
+    # Combines get_p_values, get_mgales, and plot_mgales into one function.
     def analyze(self, train_preds):
         p_vals = self.get_p_vals(train_preds)
         mgales = self.get_mgales(p_vals)
