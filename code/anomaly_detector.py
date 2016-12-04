@@ -9,6 +9,7 @@ import random
 import strange
 import martingale
 
+
 class AnomalyDetector(object):
 
     # Initialization
