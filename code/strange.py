@@ -32,23 +32,22 @@ def range_percentile(train_preds):
 
 def ols_trend(train_preds):
     n = len(train_preds)
-    window_size = max(2, n//4) # TODO: clean window size up
+    window_size = max(2, 5) # TODO: clean window size up
     timestamps = np.arange(n).reshape(-1, 1)
     train_preds = train_preds.reshape(-1, 1)
     ols_trends = []
     coeffs = []
-    lin = linear_model.LinearRegression()
     for i in range(n):
-        # if i != 0:
-        #     ols_trends.append(abs(train_preds[i] - lin.predict(i)))
-        # else:
-        #     ols_trends.append(0)
-        left = max(0, i - int(math.floor(window_size / 2)))
-        right = min(n, i + int(math.ceil(window_size / 2)))
-        lin.fit(timestamps[left:right], train_preds[left:right])
-        coeffs.append(lin.coef_[0][0])
+        left = max(0, i - window_size)
+        right = i
+        lin = linear_model.LinearRegression()
         if i == 0:
-            ols_trends.append(np.linalg.norm(coeffs[i]))
+            # ols_trends.append(np.linalg.norm(coeffs[i]))
+            ols_trends.append(0)
         else:
-            ols_trends.append(np.linalg.norm(coeffs[i] - coeffs[i-1]))
+            lin.fit(timestamps[left:right], train_preds[left:right])
+            # coeffs.append(lin.coef_[0][0])
+            # distances = [np.exp(coeffs[i] - coeffs[j]) for j in range(i)]
+            # ols_trends.append(np.mean(distances))
+            ols_trends.append(abs(train_preds[i] - lin.predict(i)))
     return ols_trends
