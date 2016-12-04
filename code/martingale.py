@@ -1,12 +1,12 @@
-# A module of different Martingale creation functions for Part II of the  
-# anomaly detection process.  
+# A module of different Martingale creation functions for Part II of the
+# anomaly detection process.
 # General Form:
 #   INPUT: a set of p values
 #   OUTPUT: a set of corresponding Martingales
 
 from __future__ import division
 import numpy as np
-import random 
+import random
 import betting
 
 
@@ -27,4 +27,14 @@ def simple_mixture(p_vals, n_points=10):
     for p in p_vals:
         accs = [betting.fixed(p, epsilon) * acc for epsilon, acc in zip(epsilons, accs)]
         mgales.append(h * np.trapz(accs))
+    return mgales
+
+
+def plugin(p_vals, kernel='gaussian', n_points=50):
+    mgales = []
+    n = len(p_vals)
+    acc = 1
+    for i in range(n):
+        acc *= betting.plugin(p_vals[:i + 1], kernel, n_points)
+        mgales.append(acc)
     return mgales
