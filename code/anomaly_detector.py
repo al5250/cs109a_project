@@ -53,6 +53,7 @@ class AnomalyDetector(object):
 
     # Plots Martingales values, highlighting the ones that cross the threshold.
     def plot_mgales(self, mgales):
+        mgales = np.log(mgales)
         n = len(mgales)
         plt.figure()
         for i in range(0, n):
