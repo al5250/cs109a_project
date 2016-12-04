@@ -12,7 +12,7 @@ from sklearn.neighbors.kde import KernelDensity
 def fixed(p, epsilon):
     if epsilon < 0 or epsilon > 1:
         raise ValueError('Epsilon value out of bounds.')
-    return epsilon * p ** (epsilon - 1)
+    return epsilon * (p ** (epsilon - 1))
 
 def plugin(p_vals, kernel, n_points):
     p_vals = np.array(p_vals).reshape(-1, 1)

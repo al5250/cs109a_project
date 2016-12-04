@@ -35,6 +35,7 @@ class AnomalyDetector(object):
             equal_count = np.sum([alph == alphas[i] for alph in alphas])
             theta = random.uniform(0, 1)
             p_vals.append((greater_count + theta * equal_count) / (i + 1))
+        print p_vals
         return p_vals
 
     # Part II: Generates Martingales from p values.
@@ -47,6 +48,7 @@ class AnomalyDetector(object):
         params = self.mgale_params
         params['p_vals'] = p_vals
         mgales = mgale_dict[self.mgale_type](**params)
+        print mgales
         return mgales
 
     # Plots Martingales values, highlighting the ones that cross the threshold.
@@ -55,13 +57,13 @@ class AnomalyDetector(object):
         plt.figure()
         for i in range(0, n):
             if mgales[i] < self.threshold:
-                plt.plot(i, mgales[i], 'bo')
+                plt.plot(i, np.log10(mgales[i]), 'bo')
             else:
-                plt.plot(i, mgales[i], 'ro')
-        plt.plot(range(0, n), mgales, 'k-')
+                plt.plot(i, np.log10(mgales[i]), 'ro')
+        plt.plot(range(0, n), np.log10(mgales), 'k-')
         plt.plot([0, n], self.threshold * np.ones(2), 'r-')
         plt.xlabel('Training Examples')
-        plt.ylabel('Martingale Values')
+        plt.ylabel('Martingale Values (log)')
         plt.show()
 
     # Combines get_p_values, get_mgales, and plot_mgales into one function.

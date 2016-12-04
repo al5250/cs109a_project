@@ -13,6 +13,7 @@ def power(p_vals, epsilon=0.5):
     mgales = []
     acc = 1
     for p in p_vals:
+        print betting.fixed(p, epsilon)
         acc *= betting.fixed(p, epsilon)
         mgales.append(acc)
     return mgales
