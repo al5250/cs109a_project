@@ -11,7 +11,7 @@ ex2 = np.hstack([range(30) + np.random.normal(0, 1, 30),
 ex3 = np.hstack([range(30) + np.random.normal(0, 1, 30), 
                 [-551 + 20 * i for i in range(30, 60)] + np.random.normal(0, 1, 30), 
                 [39 + 10 * i for i in range(60, 90)] + np.random.normal(0, 1, 30)])
-ex4 = np.hstack([np.random.normal(0, 1, 30), 10, np.random.normal(0, 1, 30)])
+ex4 = np.hstack([np.random.normal(0, 1, 30), 10, 9, 11, np.random.normal(0, 1, 30)])
 
 det2 = AnomalyDetector('OLSResidual', 'Power')
 det2.analyze(ex1)
