@@ -13,7 +13,7 @@ import martingale
 class AnomalyDetector(object):
 
     # Initialization
-    def __init__(self, strange_func, mgale_type, mgale_params={}, threshold=20):
+    def __init__(self, strange_func, mgale_type, mgale_params={}, threshold=200000000000):
         self.strange_func = strange_func
         self.mgale_type = mgale_type
         self.mgale_params = mgale_params
@@ -51,23 +51,27 @@ class AnomalyDetector(object):
         return mgales
 
     # Plots Martingales values, highlighting the ones that cross the threshold.
-    def plot_mgales(self, mgales):
-        print mgales
+    def plot_mgales(self, ax, mgales, train_preds, anomalies):
         n = len(mgales)
-        plt.figure()
+
         for i in range(n):
-            if mgales[i] < self.threshold:
-                plt.plot(i, np.log10(mgales[i]), 'bo')
-            else:
-                plt.plot(i, np.log10(mgales[i]), 'ro')
-        plt.plot(range(n), np.log10(mgales), 'k-')
-        plt.plot([0, n], self.threshold * np.ones(2), 'r-')
-        plt.xlabel('Training Examples')
-        plt.ylabel('Martingale Values (log)')
-        plt.show()
+            # if mgales[i] < self.threshold:
+            ax.plot(i, np.log10(mgales[i]), 'bo')
+            # else:
+            #     ax.plot(i, np.log10(mgales[i]), 'ro')
+        ax.plot(range(n), np.log10(mgales), 'k-')
+        # ax.plot([0, n], self.threshold * np.ones(2), 'r-')
+        for a in anomalies:
+            ax.axvline(x=a, color='r', linestyle='--')
+        ax.set_xlabel('Training Examples')
+        ax.set_ylabel('Martingale Values (log)')
+        ax.set_title('{} {} Martingale Values'.format(
+            self.strange_func, self.mgale_type))
+
+        return ax
 
     # Combines get_p_values, get_mgales, and plot_mgales into one function.
-    def analyze(self, train_preds):
+    def analyze(self, ax, train_preds, anomalies):
         p_vals = self.get_p_vals(train_preds)
         mgales = self.get_mgales(p_vals)
-        self.plot_mgales(mgales)
+        return self.plot_mgales(ax, mgales, train_preds, anomalies)
