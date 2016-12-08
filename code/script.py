@@ -17,7 +17,7 @@ strangeness_functions = ['OLSTrend', 'OLSResidual', 'AverageDistance', 'RangePer
 betting_functions = ['Power']
 # , 'Plugin', 'SimpleMixture'
 detectors = itertools.product(strangeness_functions, betting_functions)
-detectors = [AnomalyDetector(*det) for det in detectors]
+detectors = [AnomalyDetector(*det, mgale_params={'epsilon': 0.7}) for det in detectors]
 n_det = len(detectors)
 
 # for dat in data:
