@@ -13,7 +13,7 @@ import martingale
 class AnomalyDetector(object):
 
     # Initialization
-    def __init__(self, strange_func, mgale_type, mgale_params={}, threshold=200000000000):
+    def __init__(self, strange_func, mgale_type, mgale_params={}, threshold=20):
         self.strange_func = strange_func
         self.mgale_type = mgale_type
         self.mgale_params = mgale_params
@@ -54,16 +54,16 @@ class AnomalyDetector(object):
     def plot_mgales(self, ax, mgales, train_preds, anomalies):
         n = len(mgales)
 
-        for i in range(n):
-            # if mgales[i] < self.threshold:
-            ax.plot(i, np.log10(mgales[i]), 'bo')
+        # for i in range(n):
+        #     # if mgales[i] < self.threshold:
+        #     ax.plot(i, np.log10(mgales[i]), 'bo')
             # else:
             #     ax.plot(i, np.log10(mgales[i]), 'ro')
-        ax.plot(range(n), np.log10(mgales), 'k-')
+        ax.plot(range(n), np.log10(mgales), 'b')
         # ax.plot([0, n], self.threshold * np.ones(2), 'r-')
         for a in anomalies:
             ax.axvline(x=a, color='r', linestyle='--')
-        ax.set_xlabel('Training Examples')
+        ax.set_xlabel('Time')
         ax.set_ylabel('Martingale Values (log)')
         ax.set_title('{} {} Martingale Values'.format(
             self.strange_func, self.mgale_type))
@@ -74,4 +74,5 @@ class AnomalyDetector(object):
     def analyze(self, ax, train_preds, anomalies):
         p_vals = self.get_p_vals(train_preds)
         mgales = self.get_mgales(p_vals)
-        return self.plot_mgales(ax, mgales, train_preds, anomalies)
+        change_detected = max(mgales) > self.threshold
+        return change_detected, self.plot_mgales(ax, mgales, train_preds, anomalies)

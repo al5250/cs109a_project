@@ -1,11 +1,3 @@
-import numpy as np
-import argparse
-from anomaly_detector import AnomalyDetector
-import gen_data
-import matplotlib.pyplot as plt
-import itertools
-
-
 data = {
     'Non-anomalous': gen_data.gen_data(),
     'Slope Change': gen_data.gen_data('Slope'),
@@ -17,7 +9,7 @@ strangeness_functions = ['OLSTrend', 'OLSResidual', 'AverageDistance', 'RangePer
 betting_functions = ['Power']
 # , 'Plugin', 'SimpleMixture'
 detectors = itertools.product(strangeness_functions, betting_functions)
-detectors = [AnomalyDetector(*det, mgale_params={'epsilon': 0.7}) for det in detectors]
+detectors = [AnomalyDetector(*det, mgale_params={'epsilon': 0.8}) for det in detectors]
 n_det = len(detectors)
 
 # for dat in data:
@@ -25,7 +17,6 @@ n_det = len(detectors)
 #     ax[0] = gen_data.plot_data(ax[0], *dat)
 #     for i, det in enumerate(detectors):
 #         ax[i+1] = det.analyze(ax[i+1], *dat)
-#
 # plt.show()
 
 for name, dat in data.iteritems():
@@ -34,5 +25,5 @@ for name, dat in data.iteritems():
     for det in detectors:
         fig, ax = plt.subplots(1, 1)
         fig.suptitle('{} Data'.format(name), fontsize=14)
-        ax = det.analyze(ax, *dat)
+        _, ax = det.analyze(ax, *dat)
 plt.show()
