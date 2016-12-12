@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Puremedia</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="css/media-queries.css">
+
+   <!-- Script
+   =================================================== -->
+	<script src="js/modernizr.js"></script>
+
+   <!-- Favicons
+	=================================================== -->
+	<link rel="shortcut icon" href="favicon.png" >
+
+</head>
+
+<body class="homepage">
+
+   <div id="preloader">
+	   <div id="status">
+         <img src="images/loader.gif" height="60" width="60" alt="">
+         <div class="loader">Loading...</div>
+      </div>
+   </div>
+
+
+   <!-- Header
+   =================================================== -->
+   <header id="main-header">
+
+   	<div class="row header-inner">
+
+	      <nav id="nav-wrap">
+
+	         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">
+	         	<span class='menu-text'>Show Menu</span>
+	         	<span class="menu-icon"></span>
+	         </a>
+         	<a class="mobile-btn" href="#" title="Hide navigation">
+         		<span class='menu-text'>Hide Menu</span>
+         		<span class="menu-icon"></span>
+         	</a>
+
+	         <ul id="nav" class="nav">
+	            <li class="current"><a class="smoothscroll" href="#hero">Home.</a></li>
+		         <li><a class="smoothscroll" href="#about">Method.</a></li>
+	            <li><a class="smoothscroll" href="#services">Results.</a></li>
+                <li><a class="smoothscroll" href="#contact">Code.</a></li>
+	         </ul>
+
+	      </nav> <!-- /nav-wrap -->
+
+	   </div> <!-- /header-inner -->
+
+   </header>
+
+
+   <!-- Hero
+   =================================================== -->
+   <section id="hero">
+
+		<div class="row hero-content">
+
+			<div class="twelve columns flex-container">
+
+			   <div id="hero-slider" class="flexslider">
+
+				   <ul class="slides">
+
+					   <li>
+						   <div class="flex-caption">
+								<h1>Anomaly Detection in Time Series</h1>
+                                <h>Created for CS109a by Alex Lin and Melissa Yu</h>
+								<p><a class="button stroke smoothscroll" href="https://github.com/al5250/cs109a_project/archive/master.zip">Download Source Code</a></p>
+							</div>
+					   </li>
+
+				   </ul>
+
+			   </div> <!-- .flexslider -->
+
+	      </div> <!-- .flex-container -->
+
+		</div> <!-- .hero-content -->
+
+   </section> <!-- #hero -->
+
+
+   <!-- Method Section
+   ================================================== -->
+   <section id="about">
+
+      <div class="row section-head">
+
+           <div class="twelve columns">
+
+               <h1>Method<span>.</span></h1>
+
+               <hr />
+
+           </div>
+
+       </div>
+
+      <div class="row about-content">
+
+      	<div class="mob-whole twelve columns">
+
+      		<h2>1. Asking the Question.</h2>
+
+            <h3>Problem Statement</h3>
+	      	<p>
+                Given a sequence of random variables, we wish to develop a method
+                for determining the existence of anomalies.
+	        </p>
+            <p>
+                Specifically, as the variables arrive one by one, we test the exchangeability assumption for
+                the sequence, which states that the joint distribution for these variables is invariant under
+                any permutation of the indices. One method for anomaly detection involves using a Martingale,
+                a sequence of random variables such that the expectation of a variable is equal to the value of
+                the variable at the last point in time. In particular, the martingale here models the degree to which
+                the data violates the null hypothesis given by the exchangeability assumption.
+            </p>
+
+            <h3>Key Questions</h3>
+            <ul>
+                <li>How can we appropriately construct Martingales that will successfully
+                detect the existence of different kinds of anomalous data?</li>
+                <li>What is the best Martingale threshold level for rejecting the null hypothesis?</li>
+                <li>Is there a tradeoff between the accuracy and the confidence of our methods?</li>
+            </ul>
+
+
+      	</div>
+
+      	<div class="mob-whole twelve columns">
+
+	      	<h2>2. Getting the Data.</h2>
+
+            <h3>Anomaly Types</h3>
+	      	<p>Our study focuses on three general types of anomalies.</p>
+            <img src="images/anomaly_types.png" alt="Anomaly Types">
+
+	      	<p>
+                We construct various datasets with these three structures to evaluate the efficacy of our methods.
+                We also examine real-life time series datasets from Twitter giving counts for the number of Tweet
+                mentions of large, publicly-trade companies (e.g. AAPL, AMZN, CVS, FB) over five-minute intervals.
+	        </p>
+
+      	</div>
+
+        <div class="mob-whole twelve columns">
+
+      		<h2>3. Standardizing the Algorithm.</h2>
+
+	      	<p>
+                Here is our generalized, two-step procedure for analyzing a dataset,
+                constructing Martingales, and detecting anomalies. We wrap all of
+                our methods in an AnomalyDetector class, whose objects can be instantiated
+                with two main customizable options – (1) a strangeness function and (2)
+                a Martingale construction method.
+	        </p>
+
+            <h3>Part One</h3>
+	      	<p>Importing the training examples one by one and generating a list of corresponding p-values.</p>
+            <img src="images/part1.png" alt="Part 1">
+
+            <h3>Part Two</h3>
+	      	<p>Constructing a Martingale from the sequence of p-values</p>
+            <img src="images/part2.png" alt="Part 2">
+
+            <p>
+                This general algorithm was first introduced by Vovk et al. in [1].
+                In this project, we add our own customizations to answer the specific
+                questions we posed.
+            </p>
+
+      	</div>
+
+      </div>
+
+   </section> <!-- /about -->
+
+   <!-- Results Section
+   ================================================== -->
+   <section id="services">
+
+       <div class="row section-head">
+
+            <div class="twelve columns">
+
+                <h1>Results<span>.</span></h1>
+
+                <hr />
+
+            </div>
+
+        </div>
+
+       <div class="row about-content">
+
+         <div class="mob-whole twelve columns">
+
+             <h2>1. Evaluating Strangeness Functions.</h2>
+
+             <h3>A First Experiment</h3>
+             <p>
+                 We compare the relative efficacy of different strangeness functions
+                 for Part One of the algorithm in generating Martingales.
+             </p>
+             <ul>
+                 <li>Each dataset is self-constructed, contains 110 data points and
+                     2 ‘change points’ that signify the onset of an anomaly.</li>
+                 <li>For this part of the analysis, we standardize Part Two of the
+                     algorithm by using a power method with a fixed betting function
+                     and epsilon 0.8</li>
+             </ul>
+
+             <p>
+                 Here are the four different strangeness functions we examine.
+                 Note that they all performed well on non-anomalous Norm(0, 1) data,
+                 returning very low Martingale values.
+             </p>
+             <img src="images/stranges.png" alt="Strangeness Functions">
+
+         </div>
+
+         <div class="mob-whole twelve columns">
+
+             <h2>2. Comparing Different Thresholds.</h2>
+
+             <p>
+             </p>
+
+         </div>
+
+         <div class="mob-whole twelve columns">
+
+             <h2>3. Real-life Datasets: Twitter Data.</h2>
+
+             <p>
+
+             </p>
+
+         </div>
+
+       </div>
+
+   </section> <!-- /services -->
+
+   <!-- Footer
+   ================================================== -->
+   <footer>
+
+      <div class="row">
+
+         <p class="copyright">&copy; Copyright 2014 Puremedia. Design by <a href="http://www.styleshout.com/">Styleshout.</a></p>
+
+         <div id="go-top">
+            <a class="smoothscroll" title="Back to Top" href="#hero"><span>Top</span><i class="fa fa-long-arrow-up"></i></a>
+         </div>
+
+      </div> <!-- /row -->
+
+   </footer> <!-- /footer -->
+
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+   <script src="js/jquery.flexslider.js"></script>
+   <script src="js/jquery.fittext.js"></script>
+   <script src="js/backstretch.js"></script>
+   <script src="js/waypoints.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+
+</html>
