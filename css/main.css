@@ -1541,7 +1541,7 @@ hr {
 /*
 /*  m. Services Section
 /* =================================================================== */
-#services {
+#results {
 	background: #EDEDED;
 	padding-top: 120px;
 	padding-bottom: 120px;
@@ -1579,27 +1579,27 @@ hr {
 /*  n. About Section
 /* =================================================================== */
 
-#about {
+#method {
 	background: white;
 	padding-top: 120px;
 	padding-bottom: 0;
 }
-#about .about-content {
+#method .about-content {
 	max-width: 934px;
 }
-#about h3 {
+#method h3 {
 	font: 16px/36px "raleway-heavy", sans-serif;
 	text-transform: none;
 	padding: 0;
 	margin-bottom: 0;
 }
-#about p {
+#method p {
 	color: #707273;
 }
-#about .left {
+#method .left {
 	padding-right: 30px;
 }
-#about .right {
+#method .right {
 	padding-left: 30px;
 }
 
