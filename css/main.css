@@ -1277,7 +1277,7 @@ hr {
 /*
 /* k. Hero Section
 /* =================================================================== */
-#home {
+#hero {
 	background: #12151b url(../images/hero.png) no-repeat center center fixed;
 	-webkit-background-size: cover !important;
 	-moz-background-size: cover !important;
@@ -1288,7 +1288,7 @@ hr {
 	text-align: center;
 	position: relative;
 }
-.ie8 #home { background: #12151b; }
+.ie8 #hero { background: #12151b; }
 
 /* Flex slider settings
 /* ------------------------------------------------------------------ */
