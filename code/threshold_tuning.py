@@ -1,3 +1,8 @@
+# A script file to compare the performance of various thresholds
+# in detecting anomalous datasets. Plots accuracy vs. threshold values
+# for anomalous and non-anomalous data.
+
+
 from __future__ import division
 import numpy as np
 from anomaly_detector import AnomalyDetector
@@ -5,8 +10,7 @@ import gen_data
 import matplotlib.pyplot as plt
 import time
 
-
-# make data
+# generate data
 n_datasets = 50
 anomaly_types = [
     ('Normal', None),
@@ -14,7 +18,6 @@ anomaly_types = [
     ('RandomOutliers', 'OLSResidual'),
     ('SuddenGap', 'AverageDistance')
 ]
-
 datasets = {
     anomaly[0]: [gen_data.gen_data(anomaly[0])[0] for i in range(n_datasets)]
     for anomaly in anomaly_types
@@ -63,9 +66,8 @@ for anomaly, strange_func in anomaly_types:
 
     accuracies[anomaly] = accuracy
 
-    # plot accuracies v. threshold values
+    # plot accuracies vs threshold values
     anom_acc, norm_acc = zip(*accuracy)
-
     plt.figure()
     plt.plot(thresholds, anom_acc, c='r', label='Anomalous Data')
     plt.scatter(thresholds, anom_acc, c='r')

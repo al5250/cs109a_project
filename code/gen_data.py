@@ -1,3 +1,6 @@
+# A module to generate and plot random data following specified anomaly patterns.
+# Supported anomaly types include Random Outliers, Sudden Gap, and Slope Change.
+
 from __future__ import division
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +11,7 @@ def gen_data(anomaly_type='Normal', length=150, n_change_points=2):
     anomaly_type: string. `RandomOutliers` | `SuddenGap` | `SlopeChange`
     length: integer. length of time series
     n_change_points: integer. number of distribution change points
-    returns
+    returns:
         time series: numpy array of shape (length, )
         anomalies: numpy array of shape (n_change_points, )
     """
@@ -56,8 +59,15 @@ def gen_data(anomaly_type='Normal', length=150, n_change_points=2):
 
 
 def plot_data(ax, data, anomalies):
+    """
+    ax: axis to plot generated data on
+    data: input data to plot
+    anomalies: array of anomaly start locations
+    returns:
+        ax: updated axis with data
+    """
     n = len(data)
-    # ax.plot(range(n), data, 'bo')
+    ax.plot(range(n), data, 'bo')
     ax.plot(range(n), data, 'b')
     for a in anomalies:
         ax.axvline(x=a, color='r', linestyle='--')

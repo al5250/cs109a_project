@@ -50,17 +50,10 @@ class AnomalyDetector(object):
         mgales = mgale_dict[self.mgale_type](**params)
         return mgales
 
-    # Plots Martingales values, highlighting the ones that cross the threshold.
+    # Plots Martingales values, highlighting the change points given.
     def plot_mgales(self, ax, mgales, train_preds, anomalies):
         n = len(mgales)
-
-        # for i in range(n):
-        #     # if mgales[i] < self.threshold:
-        #     ax.plot(i, np.log10(mgales[i]), 'bo')
-            # else:
-            #     ax.plot(i, np.log10(mgales[i]), 'ro')
         ax.plot(range(n), np.log10(mgales), 'b')
-        # ax.plot([0, n], self.threshold * np.ones(2), 'r-')
         for a in anomalies:
             ax.axvline(x=a, color='r', linestyle='--')
         ax.set_xlabel('Time')

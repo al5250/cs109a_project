@@ -32,7 +32,7 @@ def range_percentile(train_preds):
 
 def ols_residual(train_preds):
     n = len(train_preds)
-    window_size = 10 # TODO: clean window size up
+    window_size = 10
     timestamps = np.arange(n).reshape(-1, 1)
     train_preds = train_preds.reshape(-1, 1)
     ols_residuals = []
@@ -49,7 +49,7 @@ def ols_residual(train_preds):
 
 def ols_trend(train_preds):
     n = len(train_preds)
-    window_size = 10 # TODO: clean window size up
+    window_size = 10
     timestamps = np.arange(n).reshape(-1, 1)
     train_preds = train_preds.reshape(-1, 1)
     ols_trends = []
