@@ -1579,6 +1579,33 @@ hr {
 	top: -6px;
 }
 
+/*
+/*  n. About Section
+/* =================================================================== */
+
+#conclusions {
+	background: white;
+	padding-top: 120px;
+	padding-bottom: 0;
+}
+#conclusions .about-content {
+	max-width: 934px;
+}
+#conclusions h3 {
+	font: 16px/36px "raleway-heavy", sans-serif;
+	text-transform: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+#conclusions p {
+	color: #707273;
+}
+#conclusions .left {
+	padding-right: 30px;
+}
+#conclusions .right {
+	padding-left: 30px;
+}
 
 /*
 /*  n. About Section
