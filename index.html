@@ -59,6 +59,7 @@
 	            <li class="current"><a class="smoothscroll" href="#hero">Home.</a></li>
 		         <li><a class="smoothscroll" href="#method">Method.</a></li>
 	            <li><a class="smoothscroll" href="#results">Results.</a></li>
+              <li><a class="smoothscroll" href="#conclusions">Conclusions.</a></li>
                 <li><a href="https://github.com/al5250/cs109a_project" target="_blank">Github.</a></li>
 	         </ul>
 
@@ -233,33 +234,229 @@
 
              <p>
                  Here are the four different strangeness functions we examine.
-                 Note that they all performed well on non-anomalous Norm(0, 1) data,
-                 returning very low Martingale values.
              </p>
              <img src="images/stranges.png" alt="Strangeness Functions">
 
+             <h3>Non-Anomalous Data</h3>
+             <p>
+                We first test to see how the four strangeness functions perform on non-anomalous data, as a control for our experiment.  The data is simply a time series in which each point comes from the Norm(0, 1) distribution.  Ideally, we want the generated Martingales to be small in value.  Here is the generated data:
+             </p>
+
+             <img src="img/graphs/figure_6.png" alt="Data1" width="40%">
+
+             <p>
+                These four graphs chart the performance of the strangeness functions, tracking the respective Martingale values over time.  Note that in this case, the values all get smaller over time, which leads the algorithm to not identify any anomalies.  This is exactly what we want.
+             </p>
+
+             <img src="img/graphs/figure_7.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_8.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_9.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_10.png" alt="Data1" width="40%">
+
+             <p>
+                We now look at how the strangeness functions perform on anomalous data.
+             </p>
+
+
+             <h3>Anomaly Type #1: Random Outliers</h3>
+
+             <p>
+                Here is a graph of our self-generated time series data containing the random outlier anomaly.  The 'change points' are denoted by dashed red lines:
+             </p>
+
+             <img src="img/graphs/figure_1.png" alt="Data1" width="40%">
+
+              <p>
+                These are plots of the Martingales produced by the four different strangeness functions for the above dataset:
+             </p>
+
+             <img src="img/graphs/figure_2.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_3.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_4.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_5.png" alt="Data1" width="40%">
+
+             <p>
+                All four strangeness functions produce Martingales that locally peak right after an outlier occurs in the time series data.  However, due to the fact that there are very few outliers, these peaks for Average Distance, Range Percentile, and OLS Trend are not actually high enough to be global maximums, which is undesirable.  Instead, we see that <b>OLS Residual</b> performs the best, which is expected since the difference between a random outliers’ expected value and its predicted value should be significantly large.
+             </p>
+
+             <h3>Anomaly Type #2: Sudden Gap</h3>
+
+             <p>
+                Here is a graph of our self-generated time series data containing the sudden gap anomaly.  The 'change points' are denoted by dashed red lines:
+             </p>
+
+
+             <img src="img/graphs/figure_16.png" alt="Data1" width="40%">
+
+              <p>
+                These are plots of the Martingales produced by the four different strangeness functions for the above dataset:
+             </p>
+
+             <img src="img/graphs/figure_17.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_18.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_19.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_20.png" alt="Data1" width="40%">
+
+             <p>
+                All four methods seem to perform well for this type of anomaly; they all have peak Martingales after the appearance of a gap. Note that <b> Average Distance </b> produces the highest-valued Martingale.   
+             </p>
+
+             <h3>Anomaly Type #3: Slope Change</h3>
+
+             <p>
+                Here is a graph of our self-generated time series data containing the slope change anomaly.  The 'change points' are denoted by dashed red lines:
+             </p>
+
+             <img src="img/graphs/figure_11.png" alt="Data1" width="40%">
+
+              <p>
+                These are plots of the Martingales produced by the four different strangeness functions for the above dataset:
+             </p>
+
+             <img src="img/graphs/figure_12.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_13.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_14.png" alt="Data1" width="40%">
+             <img src="img/graphs/figure_15.png" alt="Data1" width="40%">
+
+             <p>
+                Average Distance and Range Percentile perform poorly, as they start increasing before the slope changes.  <b>OLS Trend</b> seems to most accurately reflects the patterns of the slope changes, which is understandable given that this metric measures slope fluctuations. 
+              </p>   
          </div>
 
          <div class="mob-whole twelve columns">
 
              <h2>2. Comparing Different Thresholds.</h2>
 
+             <h3>Methodology</h3>
+
              <p>
+                We evaluate the efficacy of anomaly detection for different Martingale thresholds.  We expect there to be a tradeoff between the accuracy and the confidence of our methods.  Here are some general points:
              </p>
+
+             <img src="images/method2.png">
+
+             <h3>Graphs</h3>
+
+             <p>
+                These are the resultant graphs for each of the three anomaly types.
+             </p>
+
+             <img src="img/thresholds/figure_1.png" alt="Data1" width="33%">
+             <img src="img/thresholds/figure_2.png" alt="Data1" width="33%">
+             <img src="img/thresholds/figure_3.png" alt="Data1" width="33%">
+
+             <p>
+                As expected, the results from plotting the accuracies for the anomalous and non-anomalous data for various values of the threshold show that there is a tradeoff between accurately detecting anomalies and classifying “normal” data as non-anomalous. 
+
+                <ul>
+                 <li>Setting the threshold value too low will result in very high accuracies for anomalous data, since nearly all data streams will be labeled as violating the exchangeability condition, but the tradeoff is that non-anomalous data streams will be mistakenly classified as anomalous too.</li>
+                 <li>Note that the Slope Change data run with the OLS Trend strangeness function shows that nearly all threshold values produce ~100% accuracy on non-anomalous data. We expect this given that previous results show that OLS Trend for non-anomalous data almost monotonically drops from 0.</li>
+                 <li>Optimal threshold can be chosen by considering which of the 2 accuracies (anomalous and non-anomalous) is more important to the user/application at hand.</li>
+                </ul>
+             </p>
+
+
 
          </div>
 
          <div class="mob-whole twelve columns">
 
              <h2>3. Real-life Datasets: Twitter Data.</h2>
+             <p>
+                Finally, we test the algorithm on a real-life dataset from Twitter.  We obtained our time series data from <a href="https://github.com/numenta/NAB/tree/master/data/realTweets">this link</a>.  Each dataset corresponds to a count of the number of Twitter mentions of large, publicly-traded companies over an interval of 5 minutes. Each row in a dataset contains a timestamp for when the 5-minute interval starts and the corresponding counts for the associated company.  The specific dataset we look at is for Amazon (AMZN).  This is the time series, with the dashed red line denoting the start of the anomaly (as indicated by the collectors):
+             </p>
+
+             <img src="img/twitter_results/figure_1.png" alt="Data1" width="40%">
 
              <p>
+                Note that it exhibits a Random Outliers structure.  Thus, we chose to use the OLS Residual strangeness function for the Martingale-based anomaly detection algorithm.  The results are below:
+             </p>
 
+             <img src="img/twitter_results/figure_2.png" alt="Data1" width="40%">
+
+             <p>
+                Our algorithm performs reasonably well; in particular, it is able to capture the presence of some sort of anomaly via a sudden peak in Martingales around the 2000-second point.  However, note that the Martingale never reaches a value that is larger than the starting value; we conjecture that this may be because too much time passed before we reached the beginning of the anomalous data.  We expect the algorithm to perform better on data that has anomalies towards the beginning of the time series.     
              </p>
 
          </div>
 
        </div>
+
+   </section>
+
+   <section id="conclusions">
+
+        <div class="row section-head">
+
+            <div class="twelve columns">
+
+                <h1>Conclusions<span>.</span></h1>
+
+                <hr />
+
+            </div>
+
+        </div>
+
+        <div class="row about-content">
+
+         <div class="mob-whole twelve columns">
+
+             <h3>Main Concepts</h3>
+
+             <p>
+             <ul>
+                 <li>Choose Strangeness Function Based on Data: Different strangeness functions are better suited to detecting different anomaly types.</li>
+                 <li>Choose Threshold Based on User Priorities: There is a tradeoff between detecting anomalies accurately and classifying non-anomalous data streams correctly. Choose a threshold based on the user’s priorities.</li>
+              </ul>
+            
+             </p>
+
+             <h3>Future Work</h3>
+
+             <p>
+             <ul>
+                 <li>Explore performance of various strangeness functions for labeled data (1-Nearest Neighbor, SVM, Decision Trees) since our current work focuses only on unlabeled data streams.</li>
+                 <li>Evaluate performance of current methods on multidimensional datasets and make improvements as necessary.</li>
+                 <li>Explore other martingale construction methods, including Sleepy Jumper, etc.</li>
+                <li>After hitting a change point, remove previous points from memory to improve accuracy of detecting future anomalies.</li>
+              </ul>
+            
+             </p>
+
+             <h3>References</h3>
+
+             <p>
+             <ol>
+                 <li>Vovk, V., Nouretdinov, I., and Gammerman, A. Testing exchangeability on-line. In Proceedings of the 20th International Conference on Machine Learning, pp. 768–775, 2003.</li>
+                 <li>Ho, S.-S. A martingale framework for concept change detection in time-varying data streams. In Proceedings of the 22nd International Conference on Machine Learning, pp. 321–327, 2005.</li>
+                 <li>Fedorova et. al. Plug-in martingales for testing exchangeability on-line. In Proceedings of the 29th International Conference on Machine Learning.</li>
+              </ol>
+            
+             </p>
+
+             <h3>Appendix: Code</h3>
+
+             <p>
+             All of our code can be downloaded from the GitHub link above.  Here are descriptions of our main code files:
+             <ul>
+                 <li>anomaly_detector.py - the main anomaly detection class that implements the anomaly detection algorithm with two main customizable features: strangeness function and Martingale generation process </li>
+                 <li>betting.py - a module of different betting functions for Martingale generation</li>
+                 <li>gen_data.py - a module that generates anomalous data based on the three main types (random outlier, sudden gap, slope change)</li>
+                 <li>martingale.py - a module of different processes for Martingale generation</li>
+                 <li>strange.py - a module of different strangeness functions for part 1 of the anomaly detection algorithm</li>
+              </ul>
+              Here are descriptions of the scripts used to obtain our results:
+              <ul>
+                <li>classify_twitter_data.py - a script for running our anomaly detection algorithm on the AMZN Twitter data; detailed in Part 3 of the Results section</li>
+                <li>classify_twitter_data.py - a script for running our anomaly detection algorithm with different strangeness functions on different anomaly types; detailed in Part 1 of the Results section</li>
+                <li>threshold_tuning.py - a script for trying different thresholds for our anomaly detection algorithm for different anomaly types; detailed in Part 2 of the Results section</li>
+              </ul>
+            
+             </p>
+          </div>
+
+        </div>
 
    </section>
 
